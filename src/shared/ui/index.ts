@@ -1,3 +1,5 @@
-export { Button } from './button'
+export { Button } from './button.component'
 export { Icon } from './icon'
 export { Image, type ImageSourceName } from './image'
+export * from './navigation-menu.component'
+export { Paper } from './paper'

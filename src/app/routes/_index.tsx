@@ -1,9 +1,15 @@
 import { SharedUi } from '@shared'
+import { LayoutUi } from '@widgets/layout'
 
 export default function IndexRoute() {
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <SharedUi.Button>Click me</SharedUi.Button>
-    </div>
+    <LayoutUi.Layout>
+      <SharedUi.Paper className="flex flex-col items-center justify-center gap-4 p-8"></SharedUi.Paper>
+				<h1 className="text-4xl font-bold">Welcome to Devfolio</h1>
+				<p className="text-lg text-gray-600 dark:text-gray-400">
+					This is a personal portfolio website built with React, TypeScript, and Tailwind CSS.
+				</p>
+			</SharedUi.Paper>
+    </LayoutUi.Layout>
   )
 }
