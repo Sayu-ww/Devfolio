@@ -3,7 +3,10 @@ import { NAVIGATION_MENU_ITEMS } from '../constants'
 
 export function Header() {
   return (
-    <header className="flex justify-center gap-2 p-2">
+    <header className="flex justify-between gap-2 p-2 not-md:justify-center">
+      <SharedUi.Badge variant="secondary" className="m-2 text-sm not-md:hidden">
+        Sayu-ww&apos;s Personal Portfolio
+      </SharedUi.Badge>
       <SharedUi.NavigationMenu>
         <SharedUi.NavigationMenuList className="gap-3">
           {NAVIGATION_MENU_ITEMS.map((item, index) => (
