@@ -3,9 +3,7 @@ import type { Route } from './+types/root'
 
 import './app.css'
 
-export const links: Route.LinksFunction = () => [
-  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-]
+export const links: Route.LinksFunction = () => [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]
 
 export function Layout(props: React.PropsWithChildren) {
   const { children } = props
@@ -15,11 +13,15 @@ export function Layout(props: React.PropsWithChildren) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>React Router App</title>
+        <title>Алексей — Fullstack Developer</title>
+        <meta
+          name="description"
+          content="Портфолио Алексея, Fullstack Developer: React, TypeScript, Node.js, NestJS."
+        />
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="dark">
         {children}
         <ScrollRestoration />
         <Scripts />
