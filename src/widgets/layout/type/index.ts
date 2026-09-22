@@ -1,2 +1,2 @@
 // type segment for layout
-export {};
+export * as UiTypes from './ui'

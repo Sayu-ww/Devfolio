@@ -1,5 +1,5 @@
 import { SharedUi } from '@shared'
-import { NAVIGATION_MENU_ITEMS } from '../constants'
+import { NAVIGATION_MENU_ITEMS } from '../lib/constant'
 
 export function Header() {
   return (

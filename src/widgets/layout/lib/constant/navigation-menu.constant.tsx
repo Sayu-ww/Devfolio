@@ -1,4 +1,6 @@
-export const NAVIGATION_MENU_ITEMS = [
+import type * as LayoutTypes from '../../type'
+
+export const NAVIGATION_MENU_ITEMS: LayoutTypes.UiTypes.NavigationMenuItem[] = [
   {
     title: 'Projects',
     href: '/#projects',

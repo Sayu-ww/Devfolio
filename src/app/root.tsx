@@ -17,7 +17,7 @@ export function Layout(props: React.PropsWithChildren) {
         <Meta />
         <Links />
       </head>
-      <body className="dark">
+      <body>
         {children}
         <ScrollRestoration />
         <Scripts />
