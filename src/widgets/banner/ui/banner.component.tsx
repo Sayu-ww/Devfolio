@@ -13,8 +13,6 @@ export function BannerComponent(props: Props) {
     setStage((prevStage) => {
       switch (prevStage) {
         case 'greeting':
-          return 'projects'
-        case 'projects':
           return 'stack'
         case 'stack':
           return 'contacts'
@@ -36,10 +34,6 @@ export function BannerComponent(props: Props) {
       <div className="relative flex size-full flex-col items-center overflow-scroll md:justify-center">
         <SharedUi.Fade show={stage === 'greeting'}>
           <BannerUi.GreetingMessageComponent />
-        </SharedUi.Fade>
-
-        <SharedUi.Fade show={stage === 'projects'}>
-          <BannerUi.ProjectsSectionComponent />
         </SharedUi.Fade>
 
         <SharedUi.Fade show={stage === 'stack'}>

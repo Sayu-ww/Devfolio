@@ -1,3 +1,4 @@
+import { ThemeProvider } from 'next-themes'
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import type { Route } from './+types/root'
 
@@ -18,9 +19,11 @@ export function Layout(props: React.PropsWithChildren) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <ThemeProvider defaultTheme="dark" enableSystem attribute="class">
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </ThemeProvider>
       </body>
     </html>
   )

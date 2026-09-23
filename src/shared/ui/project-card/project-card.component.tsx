@@ -9,13 +9,13 @@ type Props = SharedTypes.Ui.PropsWithClassName<{
 
 export function ProjectCard(props: Props) {
   const { className, project } = props
-  const { title, description, tags, imageSrc, category } = project
+  const { title, description, tags, images, category } = project
 
   return (
     <div
       onClick={(e) => e.stopPropagation()}
       className={clsx(
-        'group relative flex flex-col justify-center gap-4 rounded-xl border border-gray-200 px-10 py-8 transition-colors duration-500',
+        'group relative flex flex-col justify-center gap-4 rounded-xl border border-gray-200 px-10 py-8 transition-colors duration-500 dark:dark:border-gray-500/20',
         className,
       )}
     >
@@ -24,7 +24,7 @@ export function ProjectCard(props: Props) {
         <SharedUi.Badge variant={'default'}>{category}</SharedUi.Badge>
       </div>
 
-      <SharedUi.Image src={imageSrc} alt={title} className="h-50 w-full rounded-lg" />
+      <SharedUi.Image src={images[0].src} alt={title} className="h-52 w-full rounded-lg" />
 
       <div className="absolute inset-0 flex flex-col justify-between gap-4 rounded-xl bg-black/60 p-8 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
         <div className="flex flex-col gap-2">
