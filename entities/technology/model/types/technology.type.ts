@@ -1,3 +1,5 @@
+import type { IconName } from '@shared/ui/icon/icon.component'
+
 export type TechnologyCategory =
   | 'language' // TypeScript, JavaScript
   | 'framework' // React, NestJS, Express
@@ -14,4 +16,5 @@ export interface Technology {
   name: string
   category: TechnologyCategory
   group: TechnologyGroup
+  iconName: IconName
 }

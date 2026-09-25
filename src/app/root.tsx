@@ -2,6 +2,7 @@ import { ThemeProvider } from 'next-themes'
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import type { Route } from './+types/root'
 
+import { LayoutUi } from '@widgets/layout'
 import './app.css'
 
 export const links: Route.LinksFunction = () => [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]
@@ -20,6 +21,7 @@ export function Layout(props: React.PropsWithChildren) {
       </head>
       <body>
         <ThemeProvider defaultTheme="dark" enableSystem attribute="class">
+          <LayoutUi.PageLoaderComponent />
           {children}
           <ScrollRestoration />
           <Scripts />

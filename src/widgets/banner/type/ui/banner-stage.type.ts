@@ -1,1 +1,1 @@
-export type BannerStage = 'greeting' | 'stack' | 'contacts'
+export type BannerStage = 'greeting' | 'stack' | 'personal-info' | 'contacts'

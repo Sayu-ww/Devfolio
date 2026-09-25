@@ -8,7 +8,7 @@ export function LayoutComponent(props: React.PropsWithChildren & SharedTypes.Ui.
   return (
     <div className={clsx('flex min-h-screen flex-col', className)}>
       <Header />
-      <main className="flex-grow px-5 md:px-15 flex items-center w-full">{children}</main>
+      <main className="flex w-full flex-grow items-center px-5 md:px-15">{children}</main>
       <Footer />
     </div>
   )

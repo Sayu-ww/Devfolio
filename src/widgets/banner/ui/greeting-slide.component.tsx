@@ -3,7 +3,7 @@ import { clsx } from 'cn'
 
 type Props = SharedTypes.Ui.PropsWithClassName
 
-export function GreetingMessageComponent(props: Props) {
+export function GreetingSlideComponent(props: Props) {
   const { className } = props
   return (
     <article
@@ -16,6 +16,7 @@ export function GreetingMessageComponent(props: Props) {
       <p className="text-lg text-gray-600 dark:text-gray-400">
         This is a personal portfolio website built with React, TypeScript, and Tailwind CSS.
       </p>
+      <span className="text-lg font-semibold">Click</span>
     </article>
   )
 }
