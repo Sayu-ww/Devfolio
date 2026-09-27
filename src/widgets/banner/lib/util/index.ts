@@ -1,2 +1,2 @@
 // lib/util segment for banner
-export {};
+export { GetRandomFloatingStats } from './get-random-floating-stats.util'

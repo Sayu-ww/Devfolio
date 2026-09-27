@@ -9,10 +9,11 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['React', 'TypeScript', 'NestJS', 'Node.js', 'TanStack Query', 'Zustand', 'JWT', 'Stripe'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],
+    link: 'https://nyst.ubc.one/',
   },
   {
     id: 'gettbot',
@@ -23,7 +24,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['React', 'TypeScript', 'TanStack Query', 'Axios', 'i18next', 'Tailwind CSS', 'REST API'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/gettbot/gettbot-preview.png',
         description: 'Banner',
       },
     ],
@@ -38,7 +39,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['HTML', 'TypeScript', 'Tailwind CSS', 'Figma', 'Responsive Design'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],
@@ -61,7 +62,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     ],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],
@@ -75,7 +76,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'MikroORM', 'TanStack Query', 'Zustand', 'Docker'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],
@@ -88,7 +89,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['Web App', 'Private Chats'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],
@@ -102,7 +103,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['Web Development'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],
@@ -116,7 +117,7 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     tags: ['Node.js', 'NestJS', 'REST API', 'JWT', 'PostgreSQL'],
     images: [
       {
-        src: '/images/projects/commercial/ava-security-services.png',
+        src: '/images/projects/commercial/ava-security-services/ava-security-services.png',
         description: 'Banner',
       },
     ],

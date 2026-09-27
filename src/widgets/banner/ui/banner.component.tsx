@@ -40,7 +40,7 @@ export function Banner(props: Props) {
     <SharedUi.Paper
       onClick={handleClickUpdateBannerStage}
       className={clsx(
-        'flex h-180 w-full flex-col gap-6 rounded-lg p-8',
+        'flex h-180 w-full flex-col gap-6 overflow-hidden rounded-lg p-8',
         stage === 'greeting' && 'cursor-pointer',
         className,
       )}

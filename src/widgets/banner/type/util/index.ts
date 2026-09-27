@@ -1,2 +1,2 @@
 // type/util segment for banner
-export {};
+export type { Stats } from './technology-icon-stats.type'
