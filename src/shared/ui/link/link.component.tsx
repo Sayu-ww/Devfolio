@@ -4,8 +4,8 @@ import clsx from 'clsx'
 import { Link as RRLink, type LinkProps as RRLinkProps } from 'react-router'
 
 const ColorClassNames = {
-  primary: 'text-ubc-blue-500 hover:text-glaucous-400',
-  secondary: 'text-white hover:text-glaucous-400 underline underline-offset-4',
+  primary: 'text-foreground hover:text-foreground/50',
+  secondary: 'text-primary-foreground hover:text-secondary underline underline-offset-4',
   none: '',
 } as const
 

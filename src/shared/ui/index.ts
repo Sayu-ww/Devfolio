@@ -1,6 +1,11 @@
-export { Button } from './button'
+export * from './badge'
+export { Button } from './button/button.component'
 export { Icon } from './icon'
 export { Image, type ImageSourceName } from './image'
 export { Link } from './link'
+export * from './navigation-menu/navigation-menu.component'
 export { Paper } from './paper'
-
+export * from './progress'
+export * from './separator'
+export * from './sheet'
+export * from './switch'

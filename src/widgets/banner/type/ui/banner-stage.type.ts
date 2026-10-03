@@ -1,0 +1,1 @@
+export type BannerStage = 'greeting' | 'stack' | 'personal-info' | 'contacts'
