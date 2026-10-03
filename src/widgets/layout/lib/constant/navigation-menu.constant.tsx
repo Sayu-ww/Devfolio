@@ -1,6 +1,6 @@
 import type * as LayoutTypes from '../../type'
 
-export const NAVIGATION_MENU_ITEMS: LayoutTypes.UiTypes.NavigationMenuItem[] = [
+export const NAVIGATION_MENU_ITEMS: LayoutTypes.UiTypes.NavLinkItem[] = [
   {
     title: 'Projects',
     href: '/projects',

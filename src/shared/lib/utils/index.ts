@@ -1,2 +1,2 @@
-export { cn } from './cn.util'
+export { createTag } from './create-technology-tag.util'
 export { splitVariant } from './split-variant.util'

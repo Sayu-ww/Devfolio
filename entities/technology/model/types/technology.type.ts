@@ -9,6 +9,7 @@ export type TechnologyCategory =
   | 'devops' // Docker, Docker Compose
   | 'tool' // Git, ESLint, Prettier, Figma
   | 'integration' // Stripe, Telegram Mini Apps, Telegram WebApp API
+  | 'feature'
 
 export type TechnologyGroup = 'frontend' | 'backend' | 'general'
 

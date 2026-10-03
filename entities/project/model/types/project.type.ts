@@ -1,14 +1,27 @@
+import type { TechnologyEntity } from 'entities'
+
 export interface Project {
   id: string
   title: string
-  category: 'commercial' | 'pet-project' | 'personal' | 'open-source'
+  category: ProjectCategory
   description: string
-  tags: string[]
+  tags: TechnologyEntity.Model.Types.Technology[]
+  preview?: string
   images: ProjectImage[]
-  link?: string
+  backendCodeSnippets?: ProjectCodeSnippet[]
+  linkToDeployProject?: string
+  linkToGithub?: string
 }
+
+export type ProjectCategory = 'commercial' | 'pet-project' | 'personal' | 'open-source'
 
 export type ProjectImage = {
   src: string
   description: string
+}
+
+export type ProjectCodeSnippet = {
+  title: string
+  language: string
+  code: string
 }

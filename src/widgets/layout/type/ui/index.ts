@@ -1,2 +1,2 @@
 // type/ui segment for layout
-export type { NavigationMenuItem } from './navigation-menu-item.type'
+export type { NavLinkItem } from './nav-link-item.type'
