@@ -19,3 +19,8 @@ export interface Technology {
   group: TechnologyGroup
   iconName: IconName
 }
+
+export interface ProjectTechnology extends Technology {
+  id: string
+  projectIds: string[]
+}

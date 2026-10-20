@@ -1,3 +1,5 @@
 export { CONTACTS } from './contacts.constant'
+export { PROJECT_IDS } from './project-ids.constant'
 export { PROJECTS } from './projects.constant'
+export { PROJECT_TECHNOLOGIES } from './project-technologies.constant'
 export { STACKS } from './stacks.constant'
