@@ -8,7 +8,7 @@ export default function Projects() {
     <LayoutUi.Layout>
       <section
         className={clsx(
-          'grid size-full grid-cols-3 items-center gap-4 transition-opacity duration-500 select-none not-md:text-center',
+          'grid w-full grid-cols-1 items-stretch gap-4 transition-opacity duration-500 select-none sm:grid-cols-2 xl:grid-cols-3',
         )}
       >
         {SharedLib.Constants.PROJECTS.map((project) => (

@@ -5,26 +5,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-html {
-  font-size: 1vw;
-}
-
-h1 {
-  font-size: 2.25rem;
-}
-
 .theme-transition,
 .theme-transition * {
   transition:
     background-color 300ms ease,
     color 300ms ease,
     border-color 300ms ease;
-}
-
-@media screen and (max-width: 768px) {
-  html {
-    font-size: 5vw;
-  }
 }
 
 @theme inline {
@@ -68,6 +54,15 @@ h1 {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --text-2xs: 0.625rem;
+  --text-3xs: 0.5625rem;
+  --tracking-banner-tight: 0.18em;
+  --tracking-extra-wide: 0.2em;
+  --tracking-banner-wide: 0.22em;
+  --tracking-banner-ultra-wide: 0.25em;
+  --leading-display: 0.98;
+  --leading-display-tight: 0.95;
+  --leading-display-relaxed: 1.05;
 }
 
 :root {
@@ -198,4 +193,114 @@ h1 {
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
+}
+
+@utility banner-glow-top {
+  background-image: radial-gradient(ellipse at 50% 0%, var(--glow-color), transparent 65%);
+}
+
+@utility banner-glow-right {
+  background-image: radial-gradient(ellipse at 100% 0%, var(--glow-color), transparent 60%);
+}
+
+@utility banner-glow-center {
+  background-image: radial-gradient(ellipse at 50% 50%, var(--glow-color), transparent 65%);
+}
+
+@utility loader-glow {
+  background-image: radial-gradient(ellipse at 50% 35%, var(--glow-color), transparent 60%);
+}
+
+@utility banner-grid-32 {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility banner-grid-40 {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@utility loader-grid {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility banner-columns {
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.7fr);
+}
+
+@utility greeting-columns {
+  grid-template-columns: 1fr auto;
+}
+
+@utility stack-panel-width {
+  width: min(82%, 360px);
+}
+
+@utility z-loader {
+  z-index: 1000;
+}
+
+@utility transition-transform-opacity {
+  transition-property: transform, opacity;
+}
+
+@utility opacity-subtle {
+  opacity: 0.12;
+}
+
+@utility h-banner {
+  height: min(45rem, max(36rem, calc(100svh - 4rem)));
+}
+
+/* Subtle portfolio background */
+body {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, var(--glow-color), transparent 55%),
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+
+  background-size:
+    100% 700px,
+    48px 48px,
+    48px 48px;
+
+  background-repeat: no-repeat, repeat, repeat;
+
+  background-attachment: fixed;
+}
+
+/* Light theme */
+:root {
+  --grid-color: rgb(0 0 0 / 4%);
+  --glow-color: rgb(0 0 0 / 5%);
+}
+
+/* Dark theme */
+.dark {
+  --grid-color: rgb(255 255 255 / 3.5%);
+  --glow-color: rgb(255 255 255 / 7%);
+}
+
+@keyframes stack-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[stack-marquee_32s_linear_infinite\] {
+    animation: none;
+  }
 }

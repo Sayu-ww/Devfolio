@@ -18,14 +18,15 @@ export function Header() {
   }
 
   return (
-    <header className="flex justify-between gap-2 p-2 not-md:justify-center">
-      <SharedUi.Link to="/">
-        <SharedUi.Badge variant="secondary" className="m-2 text-sm not-md:hidden">
-          Sayu-ww&apos;s Personal Portfolio
+    <header className="flex flex-wrap items-center justify-between gap-2 p-3 sm:px-5 sm:py-4">
+      <SharedUi.Link to="/" className="shrink-0">
+        <SharedUi.Badge variant="secondary" className="text-xs sm:text-sm">
+          <span className="sm:hidden">Sayu-ww</span>
+          <span className="hidden sm:inline">Sayu-ww&apos;s Personal Portfolio</span>
         </SharedUi.Badge>
       </SharedUi.Link>
-      <SharedUi.NavigationMenu>
-        <SharedUi.NavigationMenuList className="gap-3">
+      <SharedUi.NavigationMenu className="ml-auto">
+        <SharedUi.NavigationMenuList className="gap-0.5 sm:gap-2">
           <SharedUi.Switch
             checked={resolvedTheme === 'dark'}
             onCheckedChange={handleSwitchTheme}
