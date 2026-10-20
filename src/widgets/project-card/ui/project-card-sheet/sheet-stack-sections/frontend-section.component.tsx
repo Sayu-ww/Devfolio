@@ -1,4 +1,4 @@
-import { SharedUi } from '@shared'
+import { SharedLib, SharedUi } from '@shared'
 import type { ProjectEntity } from 'entities'
 
 type Props = {
@@ -7,32 +7,41 @@ type Props = {
 
 export function FrontendSection(props: Props) {
   const { project } = props
+
+  const frontendTags = SharedLib.Constants.PROJECT_TECHNOLOGIES.filter(
+    (technology) => technology.projectIds.includes(project.id) && technology.group === 'frontend',
+  )
+
   return (
-    <div className="flex flex-1 flex-col gap-2 overflow-y-auto px-4">
+    <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain px-3 sm:px-4">
       <h1 className="text-xl font-semibold">Frontend</h1>
-      <p>{project.description}</p>
-      <div className="flex flex-col gap-3">
-        {project.images.map((imageObj) => (
-          <div className="flex flex-col gap-2 px-6" key={imageObj.src}>
+      {frontendTags.length > 0 && (
+        <div className="flex flex-wrap gap-2" aria-label="Frontend technologies">
+          {frontendTags.map((technology) => (
+            <SharedUi.Badge key={technology.id}>{technology.name}</SharedUi.Badge>
+          ))}
+        </div>
+      )}
+      <div className="flex flex-col gap-4">
+        {project.images.map((imageObj, index) => (
+          <figure
+            className="border-border bg-muted/20 flex flex-col gap-3 rounded-lg border p-3 sm:p-4"
+            key={imageObj.src}
+          >
             <SharedUi.Image
               src={imageObj.src}
-              className="h-auto max-h-80 w-full rounded-lg border border-gray-200 object-contain! dark:dark:border-gray-500/20"
+              alt={imageObj.description}
+              className="h-auto max-h-64 w-full rounded-md border border-gray-200 object-contain! sm:max-h-80 dark:dark:border-gray-500/20"
             />
-            <p className="mb-2">{imageObj.description}</p>
-          </div>
+            <figcaption className="flex items-start gap-3">
+              <span className="text-muted-foreground shrink-0 font-mono text-xs">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="text-sm leading-relaxed">{imageObj.description}</span>
+            </figcaption>
+          </figure>
         ))}
-        {project.linkToDeployProject && (
-          <SharedUi.Link
-            variant="color:primary"
-            to={project.linkToDeployProject}
-            target="_blank"
-            className="text-center hover:underline"
-            rel="noopener noreferrer"
-          >
-            <h2>Ссылка на задеплоиный продукт: {project.title}</h2>
-          </SharedUi.Link>
-        )}
       </div>
-    </div>
+    </section>
   )
 }

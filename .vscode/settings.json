@@ -50,5 +50,5 @@
     ".*ClassNames"
   ],
   "tailwindCSS.classFunctions": ["clsx"],
-  "cSpell.words": ["nyst", "Sayu"]
+  "cSpell.words": ["DEFUTURE", "GETTBOT", "HODL", "nyst", "reactquery", "Sayu"]
 }

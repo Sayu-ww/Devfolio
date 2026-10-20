@@ -14,16 +14,16 @@ export function SheetNavbar(props: Props) {
   }
 
   return (
-    <article>
+    <article className="w-full">
       <SharedUi.NavigationMenu>
-        <SharedUi.NavigationMenuList className="border-secondary gap-1 rounded-lg border-2">
+        <SharedUi.NavigationMenuList className="border-secondary w-full flex-wrap justify-start gap-1 rounded-lg border-2 p-1">
           {ProjectCardLib.Constants.SHEET_NAV_LINK.map((item, index) => (
             <SharedUi.NavigationMenuItem key={index}>
               <SharedUi.NavigationMenuLink
                 className={SharedUi.navigationMenuTriggerStyle()}
                 render={
                   <SharedUi.Button
-                    className="rounded-lg"
+                    className="h-8 rounded-lg px-2 text-xs sm:px-3 sm:text-sm"
                     variant={state === item.state ? 'outline' : 'ghost'}
                     onClick={() => handleClick(item.state)}
                   >

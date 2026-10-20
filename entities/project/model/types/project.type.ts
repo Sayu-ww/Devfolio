@@ -1,11 +1,8 @@
-import type { TechnologyEntity } from 'entities'
-
 export interface Project {
   id: string
   title: string
   category: ProjectCategory
   description: string
-  tags: TechnologyEntity.Model.Types.Technology[]
   preview?: string
   images: ProjectImage[]
   backendCodeSnippets?: ProjectCodeSnippet[]

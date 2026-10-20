@@ -1,23 +1,13 @@
-import { createTag } from '@shared/lib/utils'
 import type { ProjectEntity } from 'entities'
+import { PROJECT_IDS } from './project-ids.constant'
 
 export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
   {
-    id: 'nyst',
+    id: PROJECT_IDS.NYST,
     title: 'NYST',
     category: 'commercial',
     description:
       'Fullstack-платформа автоклуба: публичная часть с календарём мероприятий, авторизацией и членством, а также admin-панель для управления событиями, таблицами и данными пользователей. Стек: React, NestJS, TanStack Query, Zustand, JWT и Stripe.',
-    tags: [
-      createTag('React', 'framework', 'frontend', 'react'),
-      createTag('TypeScript', 'language', 'frontend', 'typescript'),
-      createTag('NestJS', 'framework', 'backend', 'nestjs'),
-      createTag('Node.js', 'framework', 'backend', 'nodejs'),
-      createTag('TanStack Query', 'library', 'frontend', 'reactquery'),
-      createTag('Zustand', 'library', 'frontend', 'zustand'),
-      createTag('JWT', 'integration', 'backend', 'nodejs'),
-      createTag('Stripe', 'integration', 'backend', 'stripe'),
-    ],
     preview: '/images/projects/commercial/nyst/banner.webp',
     images: [
       {
@@ -63,16 +53,40 @@ export const PROJECTS: ProjectEntity.Model.Types.Project[] = [
     ],
     backendCodeSnippets: [
       {
-        title: 'Example: Events API',
+        title: 'Пример того как выглядит RoleGuard на NYST',
         language: 'typescript',
-        code: `@UseGuards(JwtAuthGuard)
-@Controller('events')
-export class EventsController {
-  constructor(private readonly eventsService: EventsService) {}
+        code: `import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { Role } from '../../enums/role.enum';
+import { IS_PUBLIC_KEY } from '../decorators/roles/public.decorator';
+import { ROLES_KEY } from '../decorators/roles/role.decorator';
 
-  @Get()
-  findAll(@Query() query: FindEventsQueryDto) {
-    return this.eventsService.findAll(query)
+@Injectable()
+export class RoleGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
+
+  canActivate(context: ExecutionContext): boolean {
+    const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
+      context.getHandler(),
+      context.getClass(),
+    ]);
+
+    if (isPublic) {
+      return true;
+    }
+
+    const requiredRoles = this.reflector.getAllAndOverride<Role[]>(ROLES_KEY, [
+      context.getHandler(),
+      context.getClass(),
+    ]);
+
+    if (!requiredRoles) {
+      return true;
+    }
+
+    const { user } = context.switchToHttp().getRequest();
+
+    return requiredRoles.some((role) => user.roles?.includes(role));
   }
 }`,
       },
@@ -80,20 +94,11 @@ export class EventsController {
     linkToDeployProject: 'https://nyst.ubc.one/',
   },
   {
-    id: 'gettbot',
+    id: PROJECT_IDS.GETTBOT,
     title: 'GETTBOT.IO',
     category: 'commercial',
     description:
       'SaaS-платформа: бесконечная лента, cursor pagination, фильтрация, поиск в URL и мультиязычность.',
-    tags: [
-      createTag('React', 'framework', 'frontend', 'react'),
-      createTag('TypeScript', 'language', 'frontend', 'typescript'),
-      createTag('TanStack Query', 'library', 'frontend', 'reactquery'),
-      createTag('Axios', 'library', 'frontend', 'reactquery'),
-      createTag('i18next', 'library', 'frontend', 'i18next'),
-      createTag('Tailwind CSS', 'styling', 'frontend', 'tailwindcss'),
-      createTag('REST API', 'integration', 'backend', 'nodejs'),
-    ],
     preview: '/images/projects/commercial/gettbot/preview.webp',
     images: [
       {
@@ -133,18 +138,12 @@ export class EventsController {
     linkToDeployProject: 'https://gettbot.io/',
   },
   {
-    id: 'ava-security',
+    id: PROJECT_IDS.AVA_SECURITY,
     title: 'AVA Security',
     category: 'commercial',
     description:
       'Двуязычный лендинг AI-видеонаблюдения (RU/EN) с hero-секцией, CTA и блоками Security и Autonomy. Отдельный экран демонстрирует сценарии видеоаналитики: детекцию людей и животных, выезд из зоны и дорожные столкновения. Реализована адаптивная и кроссбраузерная вёрстка.',
     preview: '/images/projects/commercial/ava-security-services/main-ru.webp',
-    tags: [
-      createTag('TypeScript', 'language', 'frontend', 'typescript'),
-      createTag('Tailwind CSS', 'styling', 'frontend', 'tailwindcss'),
-      createTag('RU / EN', 'integration', 'general', 'i18next'),
-      createTag('Responsive Design', 'feature', 'general', 'react'),
-    ],
     images: [
       {
         src: '/images/projects/commercial/ava-security-services/main-en.webp',
@@ -165,16 +164,10 @@ export class EventsController {
     linkToDeployProject: 'https://ava-security.services/',
   },
   {
-    id: 'a-birds-chat',
+    id: PROJECT_IDS.A_BIRDS_CHAT,
     title: 'A Birds Chat',
     category: 'commercial',
     description: 'Приложение для создания временных приватных чатов без регистрации.',
-    tags: [
-      createTag('Web App', 'feature', 'general', 'react'),
-      createTag('Private Chats', 'feature', 'general', 'telegram'),
-      createTag('i18n', 'library', 'frontend', 'i18next'),
-      createTag('App Store Integration', 'integration', 'general', 'github'),
-    ],
     preview: '/images/projects/commercial/a-birds-chat/preview.webp',
     images: [
       {
@@ -191,16 +184,11 @@ export class EventsController {
     linkToDeployProject: 'https://abirdschat.uk/',
   },
   {
-    id: 'ubc',
+    id: PROJECT_IDS.UBC,
     title: 'UBC',
     category: 'commercial',
     description:
       'Адаптивный сайт проектного офиса: главная с позиционированием и CTA, каталог кейсов с описаниями и стеками технологий, мобильная версия с фиксированной нижней навигацией.',
-    tags: [
-      createTag('Project Catalog', 'feature', 'general', 'git'),
-      createTag('Responsive Design', 'feature', 'general', 'react'),
-      createTag('Mobile Navigation', 'feature', 'general', 'react'),
-    ],
     preview: '/images/projects/commercial/ubc/preview.webp',
     images: [
       {
@@ -222,16 +210,11 @@ export class EventsController {
     linkToDeployProject: 'https://ubc.one/',
   },
   {
-    id: 'piggy-hodle',
+    id: PROJECT_IDS.PIGGY_HODL,
     title: 'PiggyHODL',
     category: 'commercial',
     description:
       'Интерфейс показывает позиции игроков, баланс piggies, билеты и количество приглашённых участников.',
-    tags: [
-      createTag('Telegram Mini App', 'integration', 'frontend', 'telegram'),
-      createTag('Leaderboard', 'feature', 'general', 'git'),
-      createTag('Referral System', 'feature', 'general', 'nodejs'),
-    ],
     preview: '/images/projects/commercial/piggy-hodle/preview.webp',
     images: [
       {
@@ -242,16 +225,11 @@ export class EventsController {
     ],
   },
   {
-    id: 'water-meters',
+    id: PROJECT_IDS.WATER_METERS,
     title: 'Water Meters',
     category: 'commercial',
     description:
       'Веб-интерфейс системы учёта водосчётчиков: вход в административную часть и табличное представление данных абонентов/приборов учёта с действиями над записями.',
-    tags: [
-      createTag('Admin Dashboard', 'feature', 'general', 'git'),
-      createTag('Authentication', 'feature', 'general', 'nodejs'),
-      createTag('Data Tables', 'feature', 'general', 'git'),
-    ],
     preview: '/images/projects/commercial/water-meters/preview.webp',
     images: [
       {
@@ -267,43 +245,27 @@ export class EventsController {
     ],
   },
   {
-    id: 'defuture',
+    id: PROJECT_IDS.DEFUTURE,
     title: 'DeFuture',
     category: 'commercial',
     description:
       'Telegram Mini App с профилем, заданиями, рейтингом, балансами и реферальной системой; данные приложения загружаются через backend API.',
-    preview: 'none',
-    tags: [
-      createTag('React', 'framework', 'frontend', 'react'),
-      createTag('TypeScript', 'language', 'frontend', 'typescript'),
-      createTag('Telegram Mini Apps', 'integration', 'frontend', 'telegram'),
-      createTag('Telegram WebApp API', 'integration', 'frontend', 'telegram'),
-      createTag('REST API', 'integration', 'backend', 'nodejs'),
-    ],
+    preview: '/images/projects/commercial/defuture/preview.webp',
     images: [
       {
-        src: '/images/projects/commercial/defuture/DeFuture.webp',
+        src: '/images/projects/commercial/defuture/defuture.webp',
         description:
           'Telegram Mini App с профилем, заданиями, рейтингом, балансами, реферальной системой и интеграцией с backend API.',
       },
     ],
   },
   {
-    id: 'cash-flow',
+    id: PROJECT_IDS.CASH_FLOW,
     title: 'Cash Flow',
     category: 'pet-project',
     description:
       'Fullstack-приложение для личных финансов: доходы и расходы, категории, бюджеты, фильтрация и пагинация транзакций.',
-    tags: [
-      createTag('React', 'framework', 'frontend', 'react'),
-      createTag('TypeScript', 'language', 'frontend', 'typescript'),
-      createTag('NestJS', 'framework', 'backend', 'nestjs'),
-      createTag('PostgreSQL', 'database', 'backend', 'postgresql'),
-      createTag('MikroORM', 'library', 'backend', 'postgresql'),
-      createTag('TanStack Query', 'library', 'frontend', 'reactquery'),
-      createTag('Zustand', 'library', 'frontend', 'zustand'),
-      createTag('Docker', 'devops', 'general', 'docker'),
-    ],
+    preview: '/images/projects/commercial/cash-flow/preview.webp',
     images: [
       {
         src: '/images/projects/commercial/ava-security-services/ava-security-services.png',

@@ -2,7 +2,7 @@ import { SharedUi } from '@shared'
 import type { IconName } from '@shared/ui/icon/icon.component'
 
 import { clsx } from 'cn'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type TransitionEvent } from 'react'
 
 type Props = {
   iconName: IconName
@@ -32,7 +32,7 @@ export function FloatingTechnologyComponent(props: Props) {
     }
   }, [duration])
 
-  const handleTransitionEnd = (event: React.TransitionEvent<SVGSVGElement>) => {
+  const handleTransitionEnd = (event: TransitionEvent<SVGSVGElement>) => {
     const isScaleTransition = event.propertyName === 'scale' || event.propertyName === 'transform'
 
     if (event.target !== event.currentTarget || !isScaleTransition || isVisible) {
@@ -45,14 +45,16 @@ export function FloatingTechnologyComponent(props: Props) {
   return (
     <SharedUi.Icon
       name={iconName}
+      aria-hidden="true"
       onTransitionEnd={handleTransitionEnd}
       style={{
         top: `${positionY}%`,
         left: `${positionX}%`,
       }}
       className={clsx(
-        'absolute size-12 transition-transform duration-500',
-        isVisible ? 'scale-100' : 'scale-0',
+        'text-muted-foreground/60 absolute size-8 sm:size-10 lg:size-12',
+        'transition-transform-opacity duration-500 ease-out',
+        isVisible ? 'scale-100 opacity-70' : 'scale-0 opacity-0',
       )}
     />
   )
